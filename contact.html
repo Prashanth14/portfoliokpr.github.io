@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="https://kit.fontawesome.com/c4a11519b2.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+
+             <nav>
+                <img src="images/Prashanth_logo.png" class="logo">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+             </nav>
+
+             <div id="contact">
+                <div class="container">
+                    <div class="contact-left">
+                        <h1 class="sub-title">Contact Me</h1>
+                        <p><i class="fa-solid fa-paper-plane"></i>contact@test.com</p>
+                        <p><i class="fa-sharp fa-solid fa-phone"></i>0123456789</p> <br>
+                        <div class="social-icons">
+                            <a href="https://github.com/Prashanth14"><i class="fa fa-github" style="font-size:35px;color:rgb(4, 4, 66)"></i></a>
+                            <a href="https://www.linkedin.com/in/prashanth1797/"><i class="fa fa-linkedin-square" style="font-size:35px;color:rgb(4, 4, 66)"></i></a>    
+                        </div> <br>
+                        <a href="PrashanthResume.pdf" download class="btn btn2"> <button type="button" class="btn btn-danger">Download resume</button>
+                        </a>
+                    </div>
+
+                    <div class="contact-right">
+                        <form name="submit-to-google-sheet"> 
+                            <input type="text" name="Name" placeholder="Your Name" required>
+                            <input type="email" name="email" placeholder="Your Email" required>
+                            <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                        <span id="msg">hello</span>
+                    </div>
+
+                </div>
+             </div>
+
+        </div>
+
+        <div class="copyright">
+            <p >Copyright @Prashanth. 2022 Software Architecture.</p>
+        </div>
+    </div>
+      <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyWPkPACDW3bZX51BHPqFmyE7zqW3QTIlwIDSPHA8jNVyWb5alxYm2xdWmGl-BqRvoaQA/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg = document.getElementById("msg")
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                msg.innerHTML = "Message sent successfully"
+                setTimeout(function(){
+                    msg.innerHTML=""
+                }, 5000)
+                form.reset()
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+</body>
+</html>
